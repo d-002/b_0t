@@ -12,7 +12,7 @@ export const channels = {
 };
 
 import { OpenAIChatApi } from "llm-api";
-const openai = new OpenAIChatApi(
+export const openai = new OpenAIChatApi(
     { apiKey: process.env.OPENAI_TOKEN },
     { model: "gpt-4o-mini", contextSize: 2048 }
 );

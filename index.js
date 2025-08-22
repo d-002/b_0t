@@ -30,9 +30,7 @@ client.on("messageCreate", async msg => {
     await feur(msg);
 });
 
-client.on("interactionCreate", async interaction => {
-    await handleInteraction(interaction)}
-);
+client.on("interactionCreate", interaction => handleInteraction(interaction));
 
 
 //----- start client

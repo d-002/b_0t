@@ -1,28 +1,18 @@
 import { REST } from "@discordjs/rest";
-import { Routes, SlashCommandBuilder } from "discord.js";
+import { Routes } from "discord.js";
 
-//----- slash commands
+import ping from "./slash_commands/ping.js"
+import askAi from "./slash_commands/askAi.js"
 
-async function ping(interaction) {
-    await interaction.reply("pong");
-}
-
-const commands = {
-    "ping": ping
-};
-const descriptions = {
-    "ping": "ping pong thing"
-};
-
+const commands = [
+    ping,
+    askAi
+];
 
 //----- setup
 
 export async function buildCommands(token, client, guildId) {
-    const rest_commands = Object.keys(commands).map(name =>
-        new SlashCommandBuilder()
-        .setName(name)
-        .setDescription(descriptions[name] || "")
-    );
+    const rest_commands = commands.map(command => command.setup());
 
     const rest = new REST({ version: "10" }).setToken(token);
     await rest.put(
@@ -31,8 +21,11 @@ export async function buildCommands(token, client, guildId) {
     );
 }
 
-export async function handleInteraction(interaction) {
+export function handleInteraction(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
-    await commands[interaction.commandName](interaction);
+    commands.forEach(command => {
+        if (command.name == interaction.commandName)
+            command.command(interaction);
+    });
 }
