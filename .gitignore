@@ -1,4 +1,10 @@
+# env variables
 env.json
+
+# vim
 .qbuild
 *.swp
+
+# node
+package-lock.json
 node_modules
