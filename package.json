@@ -1,0 +1,30 @@
+{
+  "name": "b_0t",
+  "version": "1.0.0",
+  "description": "Discord bot",
+  "keywords": [
+    "b_0t",
+    "d_00",
+    "bot"
+  ],
+  "homepage": "https://github.com/d-002/b_0t#readme",
+  "bugs": {
+    "url": "https://github.com/d-002/b_0t/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-002/b_0t.git"
+  },
+  "license": "ISC",
+  "author": "d_00",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord-interactions": "^4.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}

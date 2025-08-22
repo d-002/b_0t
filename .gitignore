@@ -1,3 +1,4 @@
 env.json
 .qbuild
 *.swp
+node_modules
