@@ -4,9 +4,10 @@ const REFRESH_SLASH_COMMANDS = false;
 import "dotenv/config";
 import { Client, GatewayIntentBits } from "discord.js";
 
-import { isAllowed } from "./src/utils.js";
+import { isAllowed, guildId, getGuild } from "./src/utils.js";
 import { feur } from "./src/actions.js";
 import { buildCommands, handleInteraction } from "./src/slash.js";
+import { initInvisible, updateInvisible } from "./src/invisible.js";
 
 
 //----- init
@@ -16,8 +17,8 @@ const client = new Client(
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
     ] });
-const guildId = "1085564304792752219";
 
 
 //----- listeners
@@ -36,12 +37,16 @@ client.on("interactionCreate", interaction => handleInteraction(interaction));
 //----- start client
 
 client.on("clientReady", () => {
+    getGuild(client);
+
     if (REFRESH_SLASH_COMMANDS) {
         buildCommands(process.env.DISCORD_TOKEN, client, guildId);
         console.log("Refreshed client commands");
     }
 
     console.log("Client started.")
+
+    initInvisible();
 });
 client.on("error", error => console.log(error));
 

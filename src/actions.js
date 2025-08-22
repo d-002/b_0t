@@ -1,6 +1,8 @@
-//import { openai, strToNumber } from "./utils.js";
+import { d_00 } from "./utils.js";
 
-async function isQuoi(msg) {
+function isQuoi(msg) {
+    if (msg.author.id == d_00) return;
+
     //const answer = await openai.textCompletion("ne réponds que par 1 (oui) ou 0 (non) : le message suivant finit-t-il par le son 'quoi' ? : " + msg.content);
     //return aiBool(answer.content);
 
