@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Discord bot",
     "main": "index.js",
-    "type": "module",
+    "type": "commonjs",
     "engines": {
         "node": ">=18.x"
     },
@@ -14,8 +14,7 @@
     "author": "d_00",
     "license": "MIT",
     "dependencies": {
-        "discord-interactions": "^4.0.0",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2"
+        "discord.js": "14.0.0",
+        "llm-api": "1.6.0"
     }
 }
