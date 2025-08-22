@@ -5,7 +5,6 @@ const name = "ask-ai";
 
 async function askAi(interaction) {
     const prompt = interaction.options.getString("prompt");
-    console.log(prompt);
     await interaction.reply(await openai.textCompletion(prompt));
 }
 

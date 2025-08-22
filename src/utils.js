@@ -1,9 +1,10 @@
+import "dotenv/config";
 export function isAllowed(client, msg) {
     return client.user.id !== msg.author.id;
 }
 
-export function isQuoi(msg) {
-    return msg.content.toLowerCase().trim() === "quoi";
+export function aiBool(text) {
+    return (parseInt(text.replaceAll(/\D/g, "")) || 0) !== 0;
 }
 
 export const channels = {
