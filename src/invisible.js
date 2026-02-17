@@ -1,4 +1,5 @@
 import { guild } from "./utils.js";
+import { log, logError } from "../src/error.js";
 
 const invisibleName = "᲼᲼";
 const invisibleRoleId = "1180979381024325773";
@@ -12,15 +13,15 @@ export function updateInvisible() {
         try {
             if (!invisible && name == invisibleName) {
                 member.setNickname(null);
-                console.log("Made " + member.user.username + " visible");
+                log("Made " + member.user.username + " visible");
             }
             if (invisible && name != invisibleName) {
                 member.setNickname(invisibleName);
-                console.log("Made " + member.user.username + " invisible");
+                log("Made " + member.user.username + " invisible");
             }
         }
         catch (error) {
-            console.error(error);
+            logError(error);
         }
     }));
 

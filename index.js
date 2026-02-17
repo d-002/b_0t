@@ -8,6 +8,7 @@ import { isAllowed, guildId, getGuild } from "./src/utils.js";
 import { feur } from "./src/actions.js";
 import { buildCommands, handleInteraction } from "./src/slash.js";
 import { updateInvisible } from "./src/invisible.js";
+import { log, logError } from "./src/error.js";
 
 
 //----- init
@@ -45,13 +46,13 @@ client.on("clientReady", () => {
 
     if (REFRESH_SLASH_COMMANDS) {
         buildCommands(process.env.DISCORD_TOKEN, client, guildId);
-        console.log("Refreshed client commands");
+        log("Refreshed client commands");
     }
 
-    console.log("Client started.")
+    log("Client started.")
 
     updateInvisible();
 });
-client.on("error", error => console.log(error));
+client.on("error", logError);
 
 client.login(process.env.DISCORD_TOKEN);
